@@ -1,10 +1,9 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState} from 'react';
 import CardList from '../components/CardList';
 import { siblings_all } from '../siblings';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import ErrorBoundary from '../components/ErrorBoundary';
-import { Component } from 'react';
 
 function App () {
 
