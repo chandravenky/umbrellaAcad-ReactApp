@@ -1,4 +1,4 @@
-export const siblings = [
+export const siblings_all = [
 {
     Number: "Number One",
     Nickname: "Spaceboy",

@@ -1,35 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import CardList from '../components/CardList';
-import { siblings } from '../siblings';
+import { siblings_all } from '../siblings';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import ErrorBoundary from '../components/ErrorBoundary';
+import { Component } from 'react';
 
-class App extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            siblings: siblings,
-            searchfield: ''
-        }
-    }
-    
-    onSearchChange = (event) =>{
-        this.setState({searchfield: event.target.value})
+function App () {
+
+    const [siblings, setSiblings] = useState(siblings_all);
+    const [searchfield, setSearchfield] = useState('')
+
+    const onSearchChange = (event) =>{
+        setSearchfield(event.target.value)
     }
 
-    render () {
-
-        const {siblings, searchfield} = this.state;
-
-        const filteredSiblings = siblings.filter(sibling => {
-            return sibling.Nickname.toLowerCase().includes(searchfield.toLowerCase());
-        })
+    const filteredSiblings = siblings.filter(sibling => {
+        return sibling.Nickname.toLowerCase().includes(searchfield.toLowerCase());
+    })
 
         return (
             <div>
                 <h1 className = 'tc textindex f2'>Umbrella Academy  Search  App</h1>
-                <SearchBox searchChange = {this.onSearchChange}/>
+                <SearchBox searchChange = {onSearchChange}/>
                 <Scroll>
                     <ErrorBoundary>
                         <CardList siblings = { filteredSiblings }/>
@@ -38,6 +31,6 @@ class App extends React.Component {
             </div>
         )
 }
-}
+
 
 export default App;
